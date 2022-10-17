@@ -1,0 +1,21 @@
+version: "3"
+networks:
+  nestjs-consul-example-network:
+    driver: bridge
+
+services:
+  nestjs-consul-example:
+    image: bitnami/consul:latest
+    container_name: "nestjs-consul-example"
+    environment:
+      - CONSUL_HTTP_TOKEN=${CONSUL_TOKEN_MASTER}
+    networks:
+      - nestjs-consul-example-network
+    command: consul agent
+    ports:
+      - "8300:8300"
+      - "8301:8301"
+      - "8301:8301/udp"
+      - "8500:8500"
+      - "8600:8600"
+      - "8600:8600/udp"

@@ -18,7 +18,11 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "__________dev infra__________": "__________dev infra__________",
+    "docker:dev:restart": "npm run docker:dev:down && npm run docker:dev:up",
+    "docker:dev:up": "set -a && . ./env.docker-compose && set +a && export COMPOSE_INTERACTIVE_NO_CLI=1 && docker-compose -f ./docker-compose.yml --compatibility up -d",
+    "docker:dev:down": "set -a && . ./env.docker-compose && set +a && export COMPOSE_INTERACTIVE_NO_CLI=1 && docker-compose -f ./docker-compose.yml down"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",
